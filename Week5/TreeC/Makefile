@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O2 -g -Wall -Wextra
+CFLAGS = -O0 -g -Wall -Wextra #-fsanitize=address -fno-omit-frame-pointer
 
 all: tree.exe
 
