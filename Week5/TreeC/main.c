@@ -1,3 +1,17 @@
+/*!
+  \mainpage N-ary tree program
+
+  This is a program that creates N-ary tree with a total of 7 nodes and prints it to screen.
+
+  \section install_sec Compilation
+
+  Run provided `Makefile` by entering `make` in the terminal.
+
+  \section Usage
+
+  Run the program `./tree.exe` to see the tree structure.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

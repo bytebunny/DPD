@@ -1,11 +1,15 @@
 #ifndef TREE_HDR
 #define TREE_HDR
 
+/*!
+  \brief Data structure for a node in the tree.
+*/
 struct node {
-    double value;
-    int nr_children;
-    // flexible array member (FAM) must be the last member of struct.
-    struct node *child[]; // FAM --> occupies 0 byte in memory, needs malloc.
+    double value;  /**< Value at the node.*/
+    int nr_children; /**< Number of children the node has.*/
+  
+    // flexible array member (FAM) must be the last member of struct. FAM occupies 0 byte in memory, needs malloc.
+    struct node *child[]; /**< Flexible array member to hold addresses of children of the node. */
 };
 
 typedef struct node Node;

@@ -1,3 +1,9 @@
+/*!
+  \file tree.c
+  \author Rostyslav Skrypnyk
+  \brief Implementation of the N-ary tree functionality.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <err.h>
@@ -6,6 +12,12 @@
 
 #define MEM_ALLOC_ERR 11
 
+/*!
+  \brief Allocates memory for a node and sets its parameters.
+  \param value Value that the node holds.
+  \param nr_children Number of children that the node has.
+  \return Address where the `node` structure is stored.
+*/
 Node* create_node(double value, int nr_children) {
     Node* node = (Node*) malloc( sizeof( struct node ) + nr_children * sizeof( struct node* ) );
     if (node == NULL){
@@ -18,18 +30,40 @@ Node* create_node(double value, int nr_children) {
     return node;
 }
 
+/*!
+  \brief Fetches the value of a node.
+  \param node Address of the node to fetch the value from.
+  \return Value of the node.
+*/
 double get_value( const Node* node ) {
     return node->value;
 }
 
+/*!
+  \brief Stores the value at a node.
+  \param node Address of the node to store the value in.
+  \param value Value to be stored.
+  \return Void.
+*/
 void set_value( Node* node, double value ) {
     node->value = value;
 }
 
+/*!
+  \brief Fetches the number of children a node has.
+  \param node Address of the node to count children for.
+  \return Number of children.
+*/
 int get_nr_children( const Node* node ) {
     return node->nr_children;
 }
 
+/*!
+  \brief Fetches a child of a node.
+  \param node Address of the node to fetch a child of.
+  \param child_nr Child number.
+  \return Address of the child node.
+*/
 Node* get_child(const Node* node, int child_nr) {
     return node->child[child_nr];
 }
