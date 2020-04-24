@@ -1,10 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <err.h>
 
 #include "tree.h"
 
+#define MEM_ALLOC_ERR 11
+
 Node* create_node(double value, int nr_children) {
     Node* node = (Node*) malloc( sizeof( struct node ) + nr_children * sizeof( struct node* ) );
+    if (node == NULL){
+      errx(MEM_ALLOC_ERR, "%s:%d (%s): can't allocate node array of size %d.\n",
+	   __FILE__, __LINE__, __func__, nr_children);
+    }
+    
     node->value = value;
     node->nr_children = nr_children;
     return node;
