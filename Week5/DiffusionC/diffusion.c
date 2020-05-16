@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
+#include <err.h>
+
+#define INPUT_ERR 11
 
 double *create_temp(int n[]);
 void init_temp(double *temp, int coords[],
@@ -16,6 +19,10 @@ void update_temp(MPI_Comm comm, double *temp, int n_local[],
                  int n_global[]);
 
 int main(int argc, char *argv[]) {
+    if ( argc != 4 )
+    {
+        errx(INPUT_ERR, "The provided number of input parameters is different from 3. Please run the program with correct number of inputs.\n");
+    }
     const int nr_dims = 2;
     MPI_Init(NULL, NULL);
     int n_global[] = {atoi(argv[1]), atoi(argv[2])};
@@ -55,7 +62,7 @@ int main(int argc, char *argv[]) {
 double *create_temp(int n[]) {
     double *temp = (double *) malloc(n[0]*n[1]*sizeof(double));
     for (int i = 0; i < n[0]; i++)
-        for (int j = 0; j < n[0]; j++)
+        for (int j = 0; j < n[1]; j++)
             temp[i*n[1] + j] = 0.0;
     return temp;
 }
