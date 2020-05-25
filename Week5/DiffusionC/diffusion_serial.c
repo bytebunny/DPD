@@ -13,6 +13,9 @@ int main(int argc, char *argv[]) {
     double *temp = create_temp(n_x, n_y);
     double *temp_new = create_temp(n_x, n_y);
     init_temp(temp, n_x, n_y);
+    printf("/// initial temp:\n");
+    print_temp(temp, n_x, n_y);
+    printf("///\n");
     for (int t = 1; t <= t_max; t++) {
         update_temp(temp_new, temp, n_x, n_y);
         double *tmp = temp;
